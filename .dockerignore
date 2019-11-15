@@ -1,0 +1,8 @@
+venv
+.dockerignore
+Dockerfile
+Dockerfile.prod
+.gitignore
+.vscode
+.travis.yml
+README.md

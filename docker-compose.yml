@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  s3_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ['/usr/src/app/entrypoint.sh']
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - 8082:5000
+    environment:
+      - FLASK_ENV=development
+      - APP_SETTINGS=app.config.DevelopmentConfig
