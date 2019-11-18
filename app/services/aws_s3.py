@@ -6,6 +6,19 @@ class AWS_S3:
     def __init__(self):
         self.s3_resource = boto3.resource('s3')
         self.s3_bucket_name = None
+        self.s3_bucket_response = None
+        self.s3_current_region = None
+
+    def get_all_buckets(self):
+        try:
+            s3 = boto3.client('s3')
+            # Call S3 to list current buckets
+            response = s3.list_buckets()
+            buckets = [bucket['Name'] for bucket in response['Buckets']]
+            return buckets
+        except BaseException as e:
+            print(e)
+            return False
 
     def create_bucket(self, bucket_prefix, s3_connection=None):
         if s3_connection is None:
@@ -19,7 +32,9 @@ class AWS_S3:
                 CreateBucketConfiguration={
                 'LocationConstraint': current_region})
             self.s3_bucket_name = bucket_name
-            return bucket_name, bucket_response, current_region
+            self.s3_bucket_response = bucket_response
+            self.s3_current_region = current_region
+            return True
         except BaseException as e:
             print(e)
             return False

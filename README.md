@@ -25,11 +25,7 @@ Stop container:
 
 ## Endpoints
 ### Info
-Informacije o projektu:
-- `/v1/demo/info`
 
-Nalaganje dataseta:
-- `/v1/upload/dataset`
 
 
 

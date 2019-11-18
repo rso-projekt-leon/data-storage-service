@@ -6,3 +6,4 @@ Dockerfile.prod
 .vscode
 .travis.yml
 README.md
+.env
