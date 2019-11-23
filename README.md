@@ -21,28 +21,20 @@ Stop container:
 - `docker-compose down -v`
 
 ### Testing
-- `docker-compose exec upload  pytest "app/tests" -p no:warnings"`
+- `docker-compose exec s3_service pytest "app/tests" -p no:warnings"`
 
 ## Endpoints
-### Info
-
-
-
-
-
-
-
-
-
-export FLASK_APP=data-storage-service.py
-export FLASK_ENV=development
-#export FLASK_DEBUG=True
+### Bucket
+- `/v1/buckets/`
+    - GET - get all buckets
+    - POST - create new bucket
+- `/v1/buckets/<bucket_name>`
+    - DELETE - delete a bucket
 
 ## Literatura
 - [Python, Boto3, and AWS S3: Demystified](https://realpython.com/python-boto3-aws-s3/)
 
 ## AWS credentials
 Moremo ustvariti naslednje datoteke 
-
 - touch ~/.aws/credentials
 - touch ~/.aws/config

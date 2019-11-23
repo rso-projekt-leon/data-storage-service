@@ -15,6 +15,9 @@ def create_app(script_info=None):
     from app.api.bucket.views import bucket_blueprint
     app.register_blueprint(bucket_blueprint)
 
+    from app.api.file.views import file_blueprint
+    app.register_blueprint(file_blueprint)
+
  
     # shell context for flask cli
     @app.shell_context_processor
