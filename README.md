@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rso-projekt-leon/data-storage-service.svg?branch=master)](https://travis-ci.org/rso-projekt-leon/data-storage-service)
+
 # data-storage-service
 
 RESTful API for working with Amazon S3.

@@ -9,15 +9,8 @@ env:
   - secure: Q3XSHMAYuEMvudFGy5VwBlUuRupeqhj0blmR/WsZOVF0UcdQmXF6WkKBBcOVptvSDrGK828GNAc2jgo9ByBOTc6mqeMfYBzOU94YVuEEv/OIbJdm7WlpGIbDeX4BGzYKmoBwd9ViBgzJ/m/46wdNeBMvKE3y8dPPGAXheCmre9ct6tOlI9dIe9pCY+P1zhm1rFZ2vSrfJW5MHMnWH+xLTyFhlxjpXgxzeEYAvbVBzautAY167KJtRO/NhNyA8AYz5cMWStAdHB2Ntyc9z7tpvYp66sDzEFXxLPWYEfca6dXIvuv5m/RluYKA6ZKx/+aIV4lvkKB5kXIyjdlwrKi9ds713ADiR5Gp1s5EA3Pr94AUTCN0JOkSiQcA4x6uxnodoTZvpsrloforv5ZTa2cTye9JxH2eKxL6diEMS0csIfqPr8hg+zjNXtsS39MbkBBtcMN0A+KJ4Ugwbnnt/yZWNN2lQJcAcqJ21vRhbBnRXPWj763vv+vqbnvIvryfiBzupSrqbliEmx6k+tI0nQ1cyM5CcqMErzJCNuZDyoc4yWYVXlyd14GTtG2oOzAHgpWgxObqgf/63uV59quI9cIBUU1MIJdp9HPcUp8MGy5OYHu+YxQl3E09OkL+8C4qTdc4UDx8NREp0uNQpwjfEUuVRF5+0ZLrZ/U1nsXd6Bu3SvE=
   - secure: osvBi8yK5k9h6WA1LnBF6uHi4CW03+lMOCBHyAbpIvj1mZitvAKc5bbmXA7S+lxUdr9zAGDUYPgr+dVcOIgqzFIDWXWaQoxcXdEXyrKXd5dhGWYuPZiTaSu90B/GOXT0wnLLn+3hkatEyF2xuvl+8pFQKZ/l28fgZsTC2r/u31tMcxbNPMVZ6Ij/KCALDufzmbrTiafLBWABFg5+XYJH9rAL+tSQt9Uk113UomodOdQAbjUiKNta99EPlFYa5hb2eQNEN8R/26Kf79umHQmk9p+8Bgxm2IbDgdvDI+2B3wFtrD6soMEqhFR91EDG5N4owVQNtJAhGaKnSlaGzI/uNMmamTX/958QQD/GLPk7Zf29a76SwFnF2+LqjLnphdn7f28Z1NkjEwZ2ZfaGWWqC7Dq590SBXwhYQeseFD7PJpWCZBcr2dpfqhOiQKZY+BKhR6EjyATFKBod9qqxH6IlgbQfEAuC05AdtxoLjLDATDpg9jDAI02BHHelRXYbB866beDqiJ7UL66zTMXeDxixPdaDJYn/9+U4ATpk5Rq3gBP+sBNNBJoB6n5c/BXIsPhuveYw14dgN/qKk5xlPHsCgCYCrlprYHVUHGsH2BszjDO2OTtRjLZqPCPeusIFy7EbDOs6xiSawxmfjw1qwN9tgyIjHD+vlZy1U7vFpsDxq98=
 
-#before_install:
-#- docker-compose up -d --build
-
 script:
-#- docker-compose exec upload  pytest "app/tests" -p no:warnings
 - docker build -f Dockerfile.prod -t "$DOCKER_IMAGE" .
-
-#after_script:
-#- docker-compose down -v
 
 after_success:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
