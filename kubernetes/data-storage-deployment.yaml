@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-storage-deployment
+  labels:
+    app: data-storage
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: data-storage
+  template:
+    metadata:
+      labels:
+        app: data-storage
+    spec:
+      containers: 
+      - image: leon11sj/data-storage-microservice
+        name: data-storage
+        command: ["gunicorn"]
+        args: ["--bind", "0.0.0.0:5000", "manage:app"]
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        - name: APP_SETTINGS
+          value: "app.config.ProductionConfig"
+        - name: FLASK_APP
+          value: app/__init__.py
+        ports:
+        - containerPort: 5000
+          name: server
+          protocol: TCP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-storage
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8082
+    protocol: TCP
+    targetPort: server
+  selector:
+    app: data-storage
