@@ -7,3 +7,4 @@ Dockerfile.prod
 .travis.yml
 README.md
 .env
+.env.prod

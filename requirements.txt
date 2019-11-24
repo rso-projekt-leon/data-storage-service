@@ -2,3 +2,4 @@ Flask==1.1.1
 Flask-RESTful==0.3.7
 pytest==5.0.1
 boto3==1.10.5
+gunicorn==19.9.0
