@@ -25,6 +25,10 @@ Stop container:
 ### Testing
 - `docker-compose exec s3_service pytest "app/tests" -p no:warnings"`
 
+## Kubernetes
+### Creating secret
+- `kubectl create secret generic aws-region --from-literal=AWS_DEFAULT_REGION='eu-central-1'`
+
 ## Endpoints
 ### Bucket
 - `/v1/buckets/`

@@ -26,6 +26,21 @@ spec:
           value: "app.config.ProductionConfig"
         - name: FLASK_APP
           value: app/__init__.py
+        - name: AWS_DEFAULT_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-region
+              key: AWS_DEFAULT_REGION
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret-access-key
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-access-key-id
+              key: AWS_ACCESS_KEY_ID      
         ports:
         - containerPort: 5000
           name: server
