@@ -78,8 +78,7 @@ class AWS_S3:
             aws_object.delete()
             return True
         except BaseException as e:
-            print(e)
-            return False
+            return e
     
     def _create_bucket_name(self, bucket_prefix):
         # The generated bucket name must be between 3 and 63 chars long

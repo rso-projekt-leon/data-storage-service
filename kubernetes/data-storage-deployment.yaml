@@ -15,7 +15,7 @@ spec:
         app: data-storage
     spec:
       containers: 
-      - image: leon11sj/data-storage-microservice:version-0.1.0-6.1
+      - image: leon11sj/data-storage-microservice:version-0.1.0-7.1
         name: data-storage
         command: ["gunicorn"]
         args: ["--bind", "0.0.0.0:5000", "manage:app"]

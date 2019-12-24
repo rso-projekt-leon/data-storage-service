@@ -27,7 +27,7 @@ class FilesList(Resource):
         aws_object = AWS_S3()
         status = aws_object.upload_file(local_file_path=f'./{filename}',
                                 s3_file_path= s3_file_path, 
-                                bucket_name=get_etcd_config('/data-storage/bucket_name', 'BUCKET_NAME') )
+                                bucket_name=get_etcd_config('/data-storage/bucket_name', 'BUCKET_NAME'))
 
         try:
             os.remove(f'./{filename}')
@@ -41,8 +41,20 @@ class FilesList(Resource):
 
 class Files(Resource):
     def delete(self, dataset_name):
-        pass
+        filename = request.args.get('filename')
+        s3_file_path = f'{dataset_name}/{filename}'
+
+        aws_object = AWS_S3()
+        status = aws_object.delete_file(s3_file_path=s3_file_path, 
+                                        bucket_name=get_etcd_config('/data-storage/bucket_name', 'BUCKET_NAME'))
+
+        if status == True:    
+            return {'message' : 'File delete succesfully.'}, 200
+        else:
+            return {'message' : status}, 400
+
+
 
 
 api.add_resource(FilesList, "/v1/files")
-api.add_resource(Files, "/v1/files/<file_name>")
+api.add_resource(Files, "/v1/files/<dataset_name>")
