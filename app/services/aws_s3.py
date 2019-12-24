@@ -67,8 +67,7 @@ class AWS_S3:
             aws_object.download_file(local_file_path)
             return True
         except BaseException as e:
-            print(e)
-            return False
+            return e
 
     def delete_file(self, s3_file_path, bucket_name=None):
         if bucket_name is None:
