@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  upload:
+  data-storage:
     build: 
       context: .
       dockerfile: Dockerfile.prod

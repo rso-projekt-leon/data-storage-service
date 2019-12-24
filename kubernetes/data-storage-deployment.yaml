@@ -15,7 +15,7 @@ spec:
         app: data-storage
     spec:
       containers: 
-      - image: leon11sj/data-storage-microservice
+      - image: leon11sj/data-storage-microservice:version-0.1.0-6.1
         name: data-storage
         command: ["gunicorn"]
         args: ["--bind", "0.0.0.0:5000", "manage:app"]
@@ -26,6 +26,12 @@ spec:
           value: "app.config.ProductionConfig"
         - name: FLASK_APP
           value: app/__init__.py
+        - name: BUCKET_NAME
+          value: production-bucket598a73db-68f6-4898-b9bb-52cc1abd31d0
+        - name: CONFIG_ETCD_HOST_IP
+          value: etcd
+        - name: CONFIG_ETCD_HOST_PORT
+          value: "2379"
         - name: AWS_DEFAULT_REGION
           valueFrom:
             secretKeyRef:
@@ -52,7 +58,7 @@ kind: Service
 metadata:
   name: data-storage
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 8082
     protocol: TCP

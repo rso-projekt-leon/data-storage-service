@@ -26,6 +26,9 @@ Stop container:
 - `docker-compose exec s3_service pytest "app/tests" -p no:warnings"`
 
 ## Kubernetes
+Apply:
+- `kubectl apply -f kubernetes/data-storage-deployment.yaml`
+
 ### Creating secret
 - `kubectl create secret generic aws-region --from-literal=AWS_DEFAULT_REGION='eu-central-1'`
 

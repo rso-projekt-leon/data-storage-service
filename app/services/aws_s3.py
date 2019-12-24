@@ -57,8 +57,7 @@ class AWS_S3:
             aws_object.upload_file(local_file_path)
             return True
         except BaseException as e:
-            print(e)
-            return False
+            return e
 
     def download_file(self, local_file_path, s3_file_path, bucket_name=None):
         if bucket_name is None:

@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  s3_service:
+  data-storage:
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,3 +14,10 @@ services:
     environment:
       - FLASK_ENV=development
       - APP_SETTINGS=app.config.DevelopmentConfig
+      - BUCKET_NAME=development-bucket54032182-6f8a-4fce-bcec-37fa41efc3fa
+    networks:
+      - backend
+networks:
+  backend:
+    external: true
+  
